@@ -9,7 +9,6 @@ import live.lafi.library_dialog.builder.DialogBaseBuilder
 import live.lafi.library_dialog.listener.StringCallbackListener
 import live.lafi.library_dialog.recyclerAdapter.RecyclerStringSelectAdapter
 import live.lafi.library_dialog.recyclerAdapter.model.StringSelectModel
-import live.lafi.tmdialog.R
 import live.lafi.tmdialog.databinding.DialogRecyclerListSelectBinding
 
 class RecyclerStringSelectDialogShow(
@@ -26,7 +25,19 @@ class RecyclerStringSelectDialogShow(
 
     private var selectTitle :String? = null
 
+    private var mSelectTitleList: List<String>? = null
+    private var mSelectContentList: List<String>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        mSelectTitleList = builder.selectTitleList
+        mSelectContentList = builder.selectContentList
+
+        if (mSelectTitleList == null || mSelectContentList == null) {
+            this.dismiss()
+            return
+        }
+
+
         super.onCreate(savedInstanceState)
         binding = DialogRecyclerListSelectBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -41,7 +52,6 @@ class RecyclerStringSelectDialogShow(
 
             this.dismiss()
         }
-
     }
 
     private fun initView() {
@@ -112,18 +122,17 @@ class RecyclerStringSelectDialogShow(
     }
 
     private fun setRecyclerList() : ArrayList<StringSelectModel> {
-        val titleList = context.resources.getStringArray(R.array.certify_info_type_list)
-        val contentList = context.resources.getStringArray(R.array.certify_info_type_explain_list)
-
-        for(i in titleList.indices) {
-            recyclerList.add(
-                StringSelectModel(
-                titleList[i],
-                contentList[i],
-                false)
-            )
+        if (mSelectTitleList != null && mSelectContentList != null) {
+            for (i in mSelectTitleList!!.indices) {
+                recyclerList.add(
+                    StringSelectModel(
+                        mSelectTitleList!![i],
+                        mSelectContentList!![i],
+                        false
+                    )
+                )
+            }
         }
-
         return recyclerList
     }
 

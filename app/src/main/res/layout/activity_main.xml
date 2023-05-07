@@ -32,5 +32,20 @@
         android:layout_gravity="center"/>
 
 
+    <Button
+        android:id="@+id/btn_select_list_button_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select List Button Dialog"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_kakao_login_button_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kakao Login Button Dialog"
+        android:layout_gravity="center"/>
+
+
 
 </LinearLayout>

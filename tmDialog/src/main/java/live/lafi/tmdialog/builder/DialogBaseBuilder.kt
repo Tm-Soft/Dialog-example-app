@@ -22,6 +22,8 @@ open class DialogBaseBuilder<out B : DialogBaseBuilder<B>>(
     internal var content: String? = null,
     internal var positiveText: String? = null,
     internal var negativeText: String? = null,
+    internal var selectTitleList: List<String>? = null,
+    internal var selectContentList: List<String>? = null,
     @ColorRes
     internal var titleTextColorResId: Int = R.color.gray_60,
     @ColorRes
@@ -48,6 +50,16 @@ open class DialogBaseBuilder<out B : DialogBaseBuilder<B>>(
 
     fun content(content: String): B {
         this.content = content
+        return this as B
+    }
+
+    fun selectTitleList(list: List<String>): B {
+        this.selectTitleList = list
+        return this as B
+    }
+
+    fun selectContentList(list: List<String>): B {
+        this.selectContentList = list
         return this as B
     }
 
