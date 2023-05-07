@@ -1,3 +1,13 @@
+dependencies {
+        implementation project(':tmDialog')
+}
+
+
+
+
+
+
+
         /*
             Dialog 객체 생성
             Title, Content, positiveText, negativeText
